@@ -2,6 +2,10 @@ package com.example.todoappch7
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TodoViewModel : ViewModel(){
 
@@ -19,6 +23,7 @@ class TodoViewModel : ViewModel(){
     // Does nothing if the title is blank (Empty or only spaces)
     fun  addTask(title:String){
         if(title.isNotBlank()){
+
             _tasks.add(Task(id = nextId++, title = title.trim()) )
         }
     }

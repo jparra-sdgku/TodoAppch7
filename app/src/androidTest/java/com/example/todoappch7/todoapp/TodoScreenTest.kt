@@ -72,6 +72,26 @@ class TodoScreenTest {
             .assertIsDisplayed()
     }
 
+    @Test
+    fun taskCounter_updatesAfterAddingTask() {
+        // The task counter should reflect the number of tasks
+        composeTestRule
+            .onNodeWithText("0 task(s)")
+            .assertIsDisplayed()
+
+        composeTestRule
+            .onNodeWithTag("input_field")
+            .performTextInput("Task One")
+
+        composeTestRule
+            .onNodeWithTag("add_button")
+            .performClick()
+
+        composeTestRule
+            .onNodeWithText("1 task(s)")
+            .assertIsDisplayed()
+    }
+
 
 }
 
